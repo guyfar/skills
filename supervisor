@@ -1,0 +1,68 @@
+安装
+宿主机环境：（Centos6）
+yum install python-setuptools
+easy_install supervisor
+
+测试安装是否成功：
+echo_supervisord_conf
+
+创建配置文件
+创建supervisor配置文件目录/etc/supervisor/
+mkdir -m 755 -p /etc/supervisor/
+
+创建主配文件supervisord.conf
+echo_supervisord_conf > /etc/supervisor/supervisord.conf
+
+创建项目配置文件目录
+mkdir -m 755 conf.d
+
+修改supervisord.conf
+最后一行，改为： files = ./conf.d/*.ini
+
+编写要引用的ini文件，如wxspider.ini：
+[program:wxspider]
+command=/usr/bin/python /pywww/wechat-spider/manage.py runserver 0.0.0.0:8001
+#umask=022
+$user=ripple
+#startsecs=0
+#stopwaitsecs=0
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/wechatspider/wechatspider.stdout.log
+stderr_logfile=/var/log/wechatspider/wechatspider.stderr.log
+stopsignal=KILL
+killasgroup=true
+
+启动supervisor
+supervisord -c /etc/supervisor/supervisord.conf
+
+pstree -p | grep supervisord
+
+查看supervisord.log
+cat /tmp/supervisord.log
+
+用 supervisorctl 查看已经被监控的program（注：必须先启动supervisor再执行这一步）
+supervisorctl -c /etc/supervisor/supervisord.conf
+
+重启监控服务
+reload
+
+查看是否重启成功
+pstree
+
+
+supervisor 适合监控业务应用，只能监控前台程序，php fork方式实现的daemon不能监控，否则supervisor> status 提示：BACKOFF  Exited too quickly (process log may have details)
+
+每次修改配置文件后需进入supervisorctl，执行reload， 改动部分才能生效
+reload
+
+两个命令
+supervisord : supervisor的服务器端部分，用于supervisor启动
+supervisorctl：启动supervisor的命令行窗口，在该命令行中可执行start、stop、status、reload等操作。
+
+web管理界面
+在supervisord.conf中打开[inet_http_server]相应配置，在supervisorctl中reload即可启动web管理界面
+[inet_http_server]         ; inet (TCP) server disabled by default
+port=*:9001
+username=user              ; (default is no username (open server))
+password=123               ; (default is no password (open server))
