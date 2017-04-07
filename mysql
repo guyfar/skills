@@ -1,0 +1,24 @@
+Restart, Start, Stop MySQL from the Command Line macOS, OSX, Linux
+
+On Linux start/stop/restart from the command line:
+ /etc/init.d/mysqld start
+ /etc/init.d/mysqld stop
+ /etc/init.d/mysqld restart
+ 
+Some Linux flavours offer the service command too
+ service mysqld start
+ service mysqld stop
+ service mysqld restart
+or
+ service mysql start
+ service mysql stop
+ service mysql restart
+ 
+On macOS Sierra & OS to start/stop/restart MySQL post 5.7  from the command line:
+  sudo launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+  sudo launchctl unload -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+  
+On OS X to start/stop/restart MySQL pre 5.7  from the command line:
+ sudo /usr/local/mysql/support-files/mysql.server start
+ sudo /usr/local/mysql/support-files/mysql.server stop
+ sudo /usr/local/mysql/support-files/mysql.server restart
