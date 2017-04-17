@@ -1,0 +1,26 @@
+说明：下面的所有内容使用环境为MacOS系统
+
+进入本地git shell, 生成自己的ssh-key, 联系三个回车
+ssh-keygen -t rsa
+登录Gitlab，将本地生成的id_rsa.pub文件里的字符串填写到profile中
+
+对新建Git项目，初始化，第一个commit:
+Git global setup（Git全局设置）:
+
+git config --global user.name "testman"
+git config --global user.email "testman@hotmail.com"
+
+Create Repository（创建仓库）
+mkdir common-util
+cd common-util
+git init
+touch README
+git add README
+git commit -m 'first commit'
+git remote add origin git@127.0.0.1:devteam/common-util.git
+git push -u origin master
+
+对于已存在Git项目：
+cd existing_git_repo 
+git remote add origin git@127.0.0.1:devteam/common-util.git 
+git push -u origin master
