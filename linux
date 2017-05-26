@@ -1,5 +1,5 @@
 常用命令
-scp
+1.scp
 把当前一个文件copy到远程另外一台主机上，可以如下命令。
 scp -r /home/daisy/full.tar.gz root@172.19.2.75:/home/root
 然后会提示你输入另外那台172.19.2.75主机的root用户的登录密码
@@ -11,3 +11,8 @@ scp -r root@/full.tar.gz 172.19.2.75:/home/root/full.tar.gz home/daisy/full.tar.
 -a 尽可能将档案状态、权限等资料都照原状予以复制
 -r 若 source 中含有目录名，则将目录下之档案亦皆依序拷贝至目的地
 -f 若目的地已经有相同档名的档案存在，则在复制前先予以删除再行复
+
+2.删除乱码文件或文件夹
+  通过ls -i 查看乱码文件或文件夹的i节点号
+  乱码前面的号就是i节点号，假如是123
+  然后通过 find -inum 123 -delete  进行删除
