@@ -2,7 +2,7 @@
 
 进入本地git shell, 生成自己的ssh-key, 联系三个回车
 ssh-keygen -t rsa
-登录Gitlab，将本地生成的id_rsa.pub文件里的字符串填写到profile中
+登录GitLab，将本地生成的id_rsa.pub文件里的字符串填写到profile中
 
 对新建Git项目，初始化，第一个commit:
 Git global setup（Git全局设置）:
