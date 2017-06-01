@@ -10,7 +10,7 @@ Git global setup（Git全局设置）:
 git config --global user.name "testman"
 git config --global user.email "testman@hotmail.com"
 
-Create Repository（创建仓库）
+创建仓库(Create Repository)
 mkdir common-util
 cd common-util
 git init
@@ -23,6 +23,10 @@ git push -u origin master
 对于已存在Git项目：
 cd existing_git_repo 
 git remote add origin git@127.0.0.1:devteam/common-util.git 
+
+提交本地新增文件
+git add README
+git commit -m 'some explain'
 
 将本地修改的代码Push到服务器上
 git push -u origin master
