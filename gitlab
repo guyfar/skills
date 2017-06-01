@@ -25,7 +25,7 @@ cd existing_git_repo
 git remote add origin git@127.0.0.1:devteam/common-util.git 
 
 提交本地新增文件
-git add README
+git add .
 git commit -m 'some explain'
 
 将本地修改的代码Push到服务器上
