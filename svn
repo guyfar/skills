@@ -13,3 +13,5 @@ svn add --force
 svn commit -m 'first commit'
 
 5、删除仓库中的某些目录及文件
+svn delete filename
+svn commit 'delete files'
