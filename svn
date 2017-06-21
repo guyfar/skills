@@ -9,9 +9,9 @@ svn log | more
 svn diff -r425:424
 
 4、已经创建了仓库，第一次将本地代码上传到仓库
-svn add --force
+svn add --force                    说明：--force 递归上传
 svn commit -m 'first commit'
 
 5、删除仓库中的某些目录及文件
-svn delete filename
+svn delete filename　--force  　　　说明：--force 强制删除
 svn commit 'delete files'
