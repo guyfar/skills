@@ -5,13 +5,16 @@ svn info
 2. 查看svn提交记录的历史版本信息
 svn log | more
 
-3.查看当前项目的任意两个版本号的区别
+3、查看某条提交记录的详细内容
+svn　log -r3303 -v
+
+4.查看当前项目的任意两个版本号的区别
 svn diff -r425:424
 
-4、已经创建了仓库，第一次将本地代码上传到仓库
+5、已经创建了仓库，第一次将本地代码上传到仓库
 svn add --force                    说明：--force 递归上传
 svn commit -m 'first commit'
 
-5、删除仓库中的某些目录及文件
+6、删除仓库中的某些目录及文件
 svn delete filename　--force  　　　说明：--force 强制删除
 svn commit 'delete files'
