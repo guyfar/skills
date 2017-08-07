@@ -4,7 +4,9 @@ On Linux start/stop/restart from the command line:
  /etc/init.d/mysqld start
  /etc/init.d/mysqld stop
  /etc/init.d/mysqld restart
- /usr/local/mysql5.6/bin/mysqld_safe --defaults-file=/data/mysql3306/etc/my3306.cnf & 
+
+ 可以用root用户登录的启动方式
+/usr/local/mysql5.6/bin/mysqldump  -uroot -P 3306 --socket=/var/lib/mysql/mysql.sock & 
  
  
 Some Linux flavours offer the service command too
