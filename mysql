@@ -4,6 +4,8 @@ On Linux start/stop/restart from the command line:
  /etc/init.d/mysqld start
  /etc/init.d/mysqld stop
  /etc/init.d/mysqld restart
+ /usr/local/mysql5.6/bin/mysqld_safe --defaults-file=/data/mysql3306/etc/my3306.cnf & 
+ 
  
 Some Linux flavours offer the service command too
  service mysqld start
