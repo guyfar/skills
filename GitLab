@@ -23,7 +23,8 @@ git push -u origin master
 
 对于已存在Git项目：
 cd existing_git_repo 
-git remote add origin git@127.0.0.1:devteam/common-util.git 
+git remote add origin ssh://git@111.202.214.196:22022/php/rzhycms.china.com.git
+git clone ssh://git@111.202.214.196:22022/php/rzhycms.china.com.git
 
 四、增加/删除文件
 git add [file1] [file2] ...       # 添加指定文件到暂存区
