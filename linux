@@ -16,3 +16,27 @@ scp -r root@/full.tar.gz 172.19.2.75:/home/root/full.tar.gz home/daisy/full.tar.
   通过ls -i 查看乱码文件或文件夹的i节点号
   乱码前面的号就是i节点号，假如是123
   然后通过 find -inum 123 -delete  进行删除
+
+3.查看僵尸进程
+使用top查看zombie如果大于0，则有。
+或者使用
+ps -A -ostat,ppid,pid,cmd | grep -e '^[Zz]'
+命令注解：
+
+-A 参数列出所有进程
+
+-o 自定义输出字段 我们设定显示字段为 stat（状态）, ppid（进程父id）, pid(进程id)，cmd（命令）这四个参数
+
+因为状态为 z或者Z的进程为僵尸进程，所以我们使用grep抓取stat状态为zZ进程
+
+运行结果参考如下
+
+Z 12334 12339 /path/cmd
+这时，我们可以使用kill -HUP 12339来杀掉这个僵尸进程
+
+运行后，可以再次运行ps -A -ostat,ppid,pid,cmd | grep -e '^[Zz]'来确认是否将僵尸进程杀死
+
+如果kill 子进程的无效，可以尝试kill 其父进程来解决问题，例如上面例子父进程pid是 12334，那么我们就运行
+
+kill -HUP 12334
+来解决问题
