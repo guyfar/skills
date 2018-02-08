@@ -40,3 +40,10 @@ Z 12334 12339 /path/cmd
 
 kill -HUP 12334
 来解决问题
+
+
+4、比较两个大文件，取两个差集。
+awk 'NR==FNR{a[$0]=1}{a[$0]?h=0:h=1}h' new.txt news_13_16.log | wc -l
+news_13_16.log　集合大
+new.txt　集合小
+这个命令的结果是取出news_13_16.log中不含new.txt的记录的集合
