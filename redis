@@ -1,2 +1,8 @@
 密码连接
 ./redis-cli -h 127.0.0.1 -p 6379 -a Passw0rd
+
+使用Python解密redis取出的16进度数据
+>>> b'\xe4\xb8\xad\xe8\xaf\x81\xe7\xbd\x91'.decode('utf-8')
+得到：u'\u4e2d\u8bc1\u7f51'
+然后再使用unescape('\u4e2d\u8bc1\u7f51');
+得到：中证网
